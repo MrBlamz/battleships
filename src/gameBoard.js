@@ -1,7 +1,8 @@
 import Ship from './ship';
-import { isEqualCoordinate } from './helpers';
+import { isEqualCoordinate, generateRandomNumber } from './helpers';
 
 const GameBoard = function GameBoard() {
+  const shipSizes = [5, 4, 3, 3, 2];
   const ships = [];
   const missedShots = [];
 
@@ -54,6 +55,23 @@ const GameBoard = function GameBoard() {
 
     if (isAvailable && isInsideBoard) {
       ships.push(Ship(shipLength, newCoordinates));
+      return true;
+    }
+
+    return false;
+  }
+
+  function fill() {
+    while (ships.length !== 5) {
+      const x = generateRandomNumber(9);
+      const y = generateRandomNumber(9);
+      const direction =
+        generateRandomNumber(1) === 0 ? 'horizontal' : 'vertical';
+      const successful = add(shipSizes[0], x, y, direction);
+
+      if (successful) {
+        shipSizes.shift();
+      }
     }
   }
 
@@ -122,12 +140,18 @@ const GameBoard = function GameBoard() {
     return ships.length > 0;
   }
 
+  function getShips() {
+    return ships;
+  }
+
   return {
     add,
+    fill,
     getCoords,
     receiveAttack,
     getMissedShots,
     hasShips,
+    getShips,
   };
 };
 

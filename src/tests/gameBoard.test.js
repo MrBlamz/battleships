@@ -66,4 +66,10 @@ describe('GameBoard', () => {
     gameBoard.receiveAttack(3, 6);
     expect(gameBoard.hasShips()).toBe(false);
   });
+
+  it('fill() adds all ships', () => {
+    const gameBoard = GameBoard();
+    gameBoard.fill();
+    expect(gameBoard.getShips()).toHaveLength(5);
+  });
 });
