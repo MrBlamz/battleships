@@ -1,4 +1,5 @@
 import Ship from './ship';
+import { isEqualCoordinate } from './helpers';
 
 const GameBoard = function GameBoard() {
   const ships = [];
@@ -16,10 +17,6 @@ const GameBoard = function GameBoard() {
     }
 
     return coords;
-  }
-
-  function isEqualCoordinate(coordinate1, coordinate2) {
-    return coordinate1.x === coordinate2.x && coordinate1.y === coordinate2.y;
   }
 
   function checkCoordinatesAvailability(newCoordinates) {
