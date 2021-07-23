@@ -69,3 +69,48 @@ body {
 .computer-gameboard .column .square:hover {
   background-color: white;
 }
+
+@media (min-width: 1400px) {
+  .square {
+    width: 50px;
+    height: 50px;
+  }
+
+  .gameboards h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #header {
+    font-size: 1rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .square {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gameboards {
+    flex-direction: column;
+    margin-bottom: 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .square {
+    width: 25px;
+    height: 25px;
+  }
+
+  #header h1 {
+    font-size: 1.7rem;
+  }
+
+  .gameboards h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+}
