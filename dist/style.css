@@ -70,6 +70,47 @@ body {
   background-color: white;
 }
 
+.modal {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  background-color: #222831;
+  color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.5s ease-in;
+  pointer-events: none;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal h2 {
+  font-size: 4.5rem;
+  margin: 2rem;
+}
+
+button#restart-game {
+  font-size: 2rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #00adb5;
+  color: #eeeeee;
+}
+
+button#restart-game:hover {
+  background-color: #eeeeee;
+  color: #222831;
+}
+
 @media (min-width: 1400px) {
   .square {
     width: 50px;
@@ -97,6 +138,15 @@ body {
     flex-direction: column;
     margin-bottom: 10%;
   }
+
+  .modal h2 {
+    font-size: 4.5rem;
+    margin: 2rem;
+  }
+
+  button#restart-game {
+    font-size: 3rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -112,5 +162,10 @@ body {
   .gameboards h2 {
     font-size: 1.2rem;
     margin-bottom: 0.2rem;
+  }
+
+  .modal h2 {
+    font-size: 2.5rem;
+    margin: 2rem;
   }
 }

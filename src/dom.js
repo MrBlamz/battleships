@@ -1,6 +1,9 @@
 const DOM = (function DOM() {
   const playerBoardContainer = document.querySelector('.player-gameboard');
   const computerBoardContainer = document.querySelector('.computer-gameboard');
+  const modal = document.querySelector('.modal');
+  const winner = document.getElementById('winner');
+  const restartGameBtn = document.getElementById('restart-game');
 
   function createGameBoard(gameBoard) {
     const board = document.createElement('div');
@@ -25,7 +28,14 @@ const DOM = (function DOM() {
     return board;
   }
 
+  function removeExistingGameBoard(container) {
+    const gameBoard = container.querySelector('.gameboard');
+    if (gameBoard) container.removeChild(gameBoard);
+  }
+
   function renderGameBoards(player, computer) {
+    removeExistingGameBoard(playerBoardContainer);
+    removeExistingGameBoard(computerBoardContainer);
     const playerBoard = createGameBoard(player);
     const computerBoard = createGameBoard(computer);
     playerBoardContainer.appendChild(playerBoard);
@@ -65,12 +75,38 @@ const DOM = (function DOM() {
     target.classList.add('missed-shot');
   }
 
+  function toggleModal() {
+    modal.classList.toggle('active');
+  }
+
+  function setWinner(text) {
+    winner.textContent = `${text} won!`;
+  }
+
+  function popUpModal(text) {
+    toggleModal();
+    setWinner(text);
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+  }
+
+  function triggerGameRestartOnModalBtnClick(fn) {
+    restartGameBtn.addEventListener('click', (e) => {
+      fn(e);
+      closeModal();
+    });
+  }
+
   return {
     renderGameBoards,
     triggerPlayOnGameBoardClick,
     getPlayerBoardSquare,
     setSuccessfulHit,
     setMissedShot,
+    popUpModal,
+    triggerGameRestartOnModalBtnClick,
   };
 })();
 

@@ -44,7 +44,7 @@ const Game = (function Game() {
       }
 
       if (!playerBoard.hasShips()) {
-        console.log('Computer Wins');
+        DOM.popUpModal('Computer');
         hasWinner = true;
       } else {
         nextTurn();
@@ -71,7 +71,7 @@ const Game = (function Game() {
       }
 
       if (!computerBoard.hasShips()) {
-        console.log('Player wins');
+        DOM.popUpModal('Player');
         hasWinner = true;
       } else {
         nextTurn();
@@ -80,12 +80,24 @@ const Game = (function Game() {
     }
   }
 
+  function restartGame() {
+    playerBoard.reset();
+    computerBoard.reset();
+    hasWinner = false;
+    addShips(playerBoard);
+    addShips(computerBoard);
+    DOM.renderGameBoards(playerBoard, computerBoard);
+    DOM.triggerPlayOnGameBoardClick(playerPlay);
+    computerPlay();
+  }
+
   function start() {
     addShips(playerBoard);
     addShips(computerBoard);
     DOM.renderGameBoards(playerBoard, computerBoard);
     drawStartingPlayer();
     DOM.triggerPlayOnGameBoardClick(playerPlay);
+    DOM.triggerGameRestartOnModalBtnClick(restartGame);
     computerPlay();
   }
 
