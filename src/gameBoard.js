@@ -2,9 +2,9 @@ import Ship from './ship';
 import { isEqualCoordinate, generateRandomNumber } from './helpers';
 
 const GameBoard = function GameBoard() {
-  const shipSizes = [5, 4, 3, 3, 2];
-  const ships = [];
-  const missedShots = [];
+  let shipSizes = [5, 4, 3, 3, 2];
+  let ships = [];
+  let missedShots = [];
 
   function calculateCoordinates(shipLength, x, y, direction) {
     const coords = [];
@@ -144,6 +144,12 @@ const GameBoard = function GameBoard() {
     return ships;
   }
 
+  function reset() {
+    shipSizes = [5, 4, 3, 3, 2];
+    ships = [];
+    missedShots = [];
+  }
+
   return {
     add,
     fill,
@@ -152,6 +158,7 @@ const GameBoard = function GameBoard() {
     getMissedShots,
     hasShips,
     getShips,
+    reset,
   };
 };
 

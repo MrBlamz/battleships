@@ -72,4 +72,19 @@ describe('GameBoard', () => {
     gameBoard.fill();
     expect(gameBoard.getShips()).toHaveLength(5);
   });
+
+  it('reset() removes all ships from the board', () => {
+    const gameBoard = GameBoard();
+    gameBoard.fill();
+    gameBoard.reset();
+    expect(gameBoard.hasShips()).toBe(false);
+  });
+
+  it('reset() removes all missedShots', () => {
+    const gameBoard = GameBoard();
+    gameBoard.receiveAttack(0, 0);
+    expect(gameBoard.getMissedShots()).toHaveLength(1);
+    gameBoard.reset();
+    expect(gameBoard.getMissedShots()).toHaveLength(0);
+  });
 });
