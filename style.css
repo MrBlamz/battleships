@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #222831;
+  color: #eeeeee;
+}
+
+.square {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  background-color: #393e46;
+}
+
+.player-gameboard .ship {
+  background-color: #00adb5;
+}
+
+.square.ship-hit {
+  background-color: green;
+}
+
+.square.missed-shot {
+  background-color: rgba(241, 16, 16, 0.918);
+}
+
+#header {
+  font-size: 1.5rem;
+}
+
+.content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.gameboards {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.gameboards h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.gameboard {
+  display: flex;
+}
+
+.computer-gameboard .gameboard {
+  cursor: pointer;
+}
+
+.computer-gameboard .column .square:hover {
+  background-color: white;
+}
