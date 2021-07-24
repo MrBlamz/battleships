@@ -46,12 +46,30 @@ body {
 }
 
 .gameboards {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
   height: 100%;
   text-align: center;
+}
+
+button.shuffle {
+  position: absolute;
+  top: 5%;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #00adb5;
+  color: #eeeeee;
+}
+
+button.shuffle:hover {
+  background-color: #eeeeee;
+  color: #222831;
 }
 
 .gameboards h2 {
@@ -131,6 +149,11 @@ button#restart-game:hover {
   .gameboards h2 {
     font-size: 2rem;
   }
+
+  button.shuffle {
+    top: 10%;
+    font-size: 2.3rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -157,6 +180,10 @@ button#restart-game:hover {
 
   button#restart-game {
     font-size: 3rem;
+  }
+
+  button.shuffle {
+    display: none;
   }
 }
 

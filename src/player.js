@@ -9,9 +9,14 @@ const Player = function Player() {
     return turn;
   }
 
+  function resetTurn() {
+    turn = false;
+  }
+
   return {
     changeTurn,
     isTurn,
+    resetTurn,
   };
 };
 

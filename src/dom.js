@@ -4,6 +4,7 @@ const DOM = (function DOM() {
   const modal = document.querySelector('.modal');
   const winner = document.getElementById('winner');
   const restartGameBtn = document.getElementById('restart-game');
+  const shuffleBtn = document.querySelector('.shuffle');
 
   function createGameBoard(gameBoard) {
     const board = document.createElement('div');
@@ -99,6 +100,10 @@ const DOM = (function DOM() {
     });
   }
 
+  function triggerBoardShuffle(fn) {
+    shuffleBtn.addEventListener('click', fn);
+  }
+
   return {
     renderGameBoards,
     triggerPlayOnGameBoardClick,
@@ -107,6 +112,7 @@ const DOM = (function DOM() {
     setMissedShot,
     popUpModal,
     triggerGameRestartOnModalBtnClick,
+    triggerBoardShuffle,
   };
 })();
 

@@ -2,7 +2,6 @@ import Player from './player';
 import Computer from './computer';
 import GameBoard from './gameBoard';
 import DOM from './dom';
-import { generateRandomNumber } from './helpers';
 
 const Game = (function Game() {
   const player = Player();
@@ -15,19 +14,18 @@ const Game = (function Game() {
     gameBoard.fill();
   }
 
-  function drawStartingPlayer() {
-    const rnd = generateRandomNumber(1);
-
-    if (rnd) {
-      player.changeTurn();
-    } else {
-      computer.changeTurn();
-    }
+  function setStartingPlayer(p) {
+    p.changeTurn();
   }
 
   function nextTurn() {
     player.changeTurn();
     computer.changeTurn();
+  }
+
+  function resetTurns() {
+    player.resetTurn();
+    computer.resetTurn();
   }
 
   function computerPlay() {
@@ -83,22 +81,23 @@ const Game = (function Game() {
   function restartGame() {
     playerBoard.reset();
     computerBoard.reset();
+    resetTurns();
     hasWinner = false;
     addShips(playerBoard);
     addShips(computerBoard);
     DOM.renderGameBoards(playerBoard, computerBoard);
     DOM.triggerPlayOnGameBoardClick(playerPlay);
-    computerPlay();
+    setStartingPlayer(player);
   }
 
   function start() {
     addShips(playerBoard);
     addShips(computerBoard);
     DOM.renderGameBoards(playerBoard, computerBoard);
-    drawStartingPlayer();
+    setStartingPlayer(player);
     DOM.triggerPlayOnGameBoardClick(playerPlay);
     DOM.triggerGameRestartOnModalBtnClick(restartGame);
-    computerPlay();
+    DOM.triggerBoardShuffle(restartGame);
   }
 
   return { start };
