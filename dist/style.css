@@ -18,6 +18,7 @@ body {
   height: 40px;
   border: 1px solid black;
   background-color: #393e46;
+  transition: all 0.5s ease-in-out;
 }
 
 .player-gameboard .ship {
@@ -67,7 +68,17 @@ body {
 }
 
 .computer-gameboard .column .square:hover {
-  background-color: white;
+  transition: all 0.1s ease-in-out;
+  transform: scale(1.1);
+  background-color: #eeeeee;
+}
+
+.computer-gameboard .column .square.ship-hit {
+  background-color: green;
+}
+
+.computer-gameboard .column .square.missed-shot:hover {
+  background-color: rgba(241, 16, 16, 0.918);
 }
 
 .modal {
